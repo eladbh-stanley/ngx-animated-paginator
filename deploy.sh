@@ -53,6 +53,13 @@ npx ng-packagr -p ng-package.json
 # -----------------------------
 
 echo "🚀 Publishing $PACKAGE_NAME@$NEW_VERSION to npm ..."
+# ensure correct metadata (name & author) before publish
+DIST_PKG="dist/package.json"
+if [[ -f "$DIST_PKG" ]]; then
+  jq --arg name "$PACKAGE_NAME" '.name=$name' "$DIST_PKG" > "$DIST_PKG.tmp" && mv "$DIST_PKG.tmp" "$DIST_PKG"
+  jq --arg author "Elad Ben-Haim <elad.benhaim@solaraai.com>" '.author=$author' "$DIST_PKG" > "$DIST_PKG.tmp" && mv "$DIST_PKG.tmp" "$DIST_PKG"
+fi
+
 npm publish dist --access public
 
 # -----------------------------
