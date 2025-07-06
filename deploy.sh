@@ -61,7 +61,9 @@ if [[ -f "$DIST_PKG" ]]; then
      '.name = $name | .author = $author' "$DIST_PKG" > "$DIST_PKG.tmp" && mv "$DIST_PKG.tmp" "$DIST_PKG"
 fi
 
-npm publish dist --access public
+pushd dist >/dev/null
+npm publish --access public
+popd >/dev/null
 
 # -----------------------------
 # 4. Push & tag
