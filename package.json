@@ -1,6 +1,6 @@
 {
   "name": "ngx-animated-paginator",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Angular wrapper for animated-paginator-web-component with ControlValueAccessor support.",
   "author": "Elad Ben-Haim",
   "license": "MIT",
